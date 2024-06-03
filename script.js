@@ -1,22 +1,24 @@
 let levels = {};
-
-document.getElementById('start-game').addEventListener('click', function() {
-    const levelInputs = document.querySelectorAll('#levels-form input');
-    levelInputs.forEach((input, index) => {
-        const levelNumber = index + 1;
-        levels[levelNumber] = input.value.split(',');
-    });
-    document.getElementById('input-section').style.display = 'none';
-    document.getElementById('game-section').style.display = 'block';
-    setLevel(1);
-});
-
 let currentLevel = 1;
 let correctOrder = [];
 let completedLevels = [];
 
 const puzzleGrid = document.getElementById('puzzle-grid');
 const optionsGrid = document.getElementById('options-grid');
+
+document.getElementById('start-game').addEventListener('click', startGame);
+
+function startGame() {
+    const form = document.getElementById('levels-form');
+    for (let i = 1; i <= 5; i++) {
+        const levelInput = form[`level-${i}`].value.split(' ');
+        levels[i] = levelInput;
+    }
+    setLevel(1);
+    document.getElementById('input-form').classList.add('hidden');
+    document.getElementById('puzzle').classList.remove('hidden');
+    document.getElementById('level-buttons').classList.remove('hidden');
+}
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -29,10 +31,8 @@ function shuffle(array) {
 function createPuzzle() {
     puzzleGrid.innerHTML = '';
     optionsGrid.innerHTML = '';
-
     correctOrder = levels[currentLevel];
 
-    // Create fixed placeholders
     for (let i = 0; i < correctOrder.length; i++) {
         const placeholder = document.createElement('div');
         placeholder.classList.add('placeholder');
@@ -42,8 +42,7 @@ function createPuzzle() {
         placeholder.addEventListener('drop', drop);
     }
 
-    // Create draggable options
-    const shuffledPhrases = shuffle([...correctOrder]);
+    const shuffledPhrases = shuffle([...levels[currentLevel]]);
     shuffledPhrases.forEach((phrase, index) => {
         const piece = document.createElement('div');
         piece.classList.add('option-piece');
@@ -108,3 +107,5 @@ function setLevel(level) {
 }
 
 document.getElementById('check-puzzle').addEventListener('click', checkPuzzle);
+
+setLevel(1);
