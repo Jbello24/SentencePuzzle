@@ -13,42 +13,38 @@ header {
 main {
     margin: 20px auto;
     padding: 20px;
-    max-width: 800px;
+    max-width: 600px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-#input-form {
-    display: block;
-    text-align: left;
-}
-
-.hidden {
-    display: none;
-}
-
-.level-input {
-    margin: 10px 0;
-}
-
-#puzzle-grid, #options-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
+section {
     margin: 20px 0;
-    justify-content: center;
 }
 
-.puzzle-piece, .option-piece, .level-input input {
+#puzzle-grid, #options-grid, #sentences-config {
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#puzzle-grid, #sentences-config {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#options-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.puzzle-piece, .option-piece, .sentence-input {
     background-color: #ddd;
     padding: 20px;
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
     transition: transform 0.2s ease;
-    margin: 5px;
-    text-align: center;
 }
 
 .placeholder {
@@ -78,20 +74,7 @@ button:hover {
     background-color: #218838;
 }
 
-#level-buttons {
-    margin-top: 20px;
-}
-
-#level-buttons button {
-    margin: 5px;
-}
-
 button.locked {
     background-color: red;
     cursor: not-allowed;
-}
-
-#share-link {
-    margin-top: 20px;
-    text-align: left;
 }
