@@ -15,26 +15,17 @@
         <section id="input-form">
             <h2>Introduce las frases</h2>
             <form id="levels-form">
-                <div class="level-input">
-                    <label for="level-1">Nivel 1:</label>
-                    <input type="text" id="level-1" name="level-1" required>
+                <div>
+                    <label for="num-levels">Número de frases:</label>
+                    <select id="num-levels" name="num-levels">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
-                <div class="level-input">
-                    <label for="level-2">Nivel 2:</label>
-                    <input type="text" id="level-2" name="level-2" required>
-                </div>
-                <div class="level-input">
-                    <label for="level-3">Nivel 3:</label>
-                    <input type="text" id="level-3" name="level-3" required>
-                </div>
-                <div class="level-input">
-                    <label for="level-4">Nivel 4:</label>
-                    <input type="text" id="level-4" name="level-4" required>
-                </div>
-                <div class="level-input">
-                    <label for="level-5">Nivel 5:</label>
-                    <input type="text" id="level-5" name="level-5" required>
-                </div>
+                <div id="level-inputs"></div>
                 <button type="button" id="start-game">Iniciar Juego</button>
             </form>
         </section>
@@ -49,6 +40,10 @@
             <button onclick="setLevel(3)" id="level-3">Nivel 3</button>
             <button onclick="setLevel(4)" id="level-4">Nivel 4</button>
             <button onclick="setLevel(5)" id="level-5">Nivel 5</button>
+        </section>
+        <section id="share-link" class="hidden">
+            <h3>Comparte este enlace con los estudiantes:</h3>
+            <p id="generated-link"></p>
         </section>
     </main>
     <script src="script.js"></script>
