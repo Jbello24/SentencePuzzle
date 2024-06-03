@@ -13,7 +13,7 @@ header {
 main {
     margin: 20px auto;
     padding: 20px;
-    max-width: 600px;
+    max-width: 800px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -21,6 +21,7 @@ main {
 
 #input-form {
     display: block;
+    text-align: left;
 }
 
 .hidden {
@@ -31,28 +32,23 @@ main {
     margin: 10px 0;
 }
 
-#puzzle-grid {
+#puzzle-grid, #options-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 10px;
     margin: 20px 0;
     justify-content: center;
 }
 
-#options-grid {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-    justify-content: center;
-}
-
-.puzzle-piece, .option-piece {
+.puzzle-piece, .option-piece, .level-input input {
     background-color: #ddd;
     padding: 20px;
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
     transition: transform 0.2s ease;
+    margin: 5px;
+    text-align: center;
 }
 
 .placeholder {
@@ -93,4 +89,9 @@ button:hover {
 button.locked {
     background-color: red;
     cursor: not-allowed;
+}
+
+#share-link {
+    margin-top: 20px;
+    text-align: left;
 }
